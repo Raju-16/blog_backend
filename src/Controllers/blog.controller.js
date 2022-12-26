@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const BlogModel = require("../Models/blog.model");
 const UserModel = require("../Models/user.model");
 const upload = require("../MiddleWare/fileUpload");
-require("../Middleware/cloudinary");
+require("../MiddleWare/cloudinary.js");
 const cloudinary = require("cloudinary");
 
 const blogRouter = express.Router();

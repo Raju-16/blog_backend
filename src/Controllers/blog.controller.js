@@ -24,7 +24,7 @@ blogRouter.get("/", async (req, res) => {
     limit = 0;
   }
   if (req.query.page) {
-    page = Number(req.query.page - 1 - limit);
+    page = parseInt((req.query.page - 1) * limit);
   } else {
     page = 0;
   }
@@ -113,7 +113,6 @@ blogRouter.patch("/:id", upload.single("image"), async (req, res, next) => {
       },
       { new: true }
     );
-    console.log(blog, "We want the result");
   } catch (error) {
     return res.status(500).send({ error: error.message });
   }

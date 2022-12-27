@@ -28,7 +28,7 @@ const register = async (req, res) => {
     return res.status(500).send({ error });
   }
   if (user) {
-    return res.status(200).send("User already registered");
+    return res.status(500).send("User already registered");
   }
 
   const newPassword = bcrypt.hashSync(password, 10);
@@ -58,7 +58,7 @@ const login = async (req, res) => {
   }
 
   if (!user) {
-    return res.status(200).send("You are not registerd");
+    return res.status(500).send("You are not registerd");
   }
 
   const isPasswordCorrect = bcrypt.compareSync(password, user.password);
@@ -86,7 +86,7 @@ userRouter.get("/:id", async (req, res, next) => {
     return res.status(500).send({ error: error.message });
   }
   if (!userBlogs) {
-    return res.status(500).send({ message: "No Blog Found" });
+    return res.status(500).send({ message: "No User Found" });
   }
   return res.status(200).json({ userBlogs });
 });

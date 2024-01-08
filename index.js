@@ -1,11 +1,11 @@
 const express = require("express");
-const connect = require("./Configs/db");
-const blogRouter = require("./Controllers/blog.controller");
+const connect = require("./src/Configs/db");
+const blogRouter = require("./src/Controllers/blog.controller");
 const {
   userRouter,
   register,
   login,
-} = require("./Controllers/user.controller");
+} = require("./src/Controllers/user.controller");
 const cors = require("cors");
 
 const app = express();

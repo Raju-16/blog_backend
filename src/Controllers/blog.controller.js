@@ -142,7 +142,7 @@ blogRouter.delete("/:id", async (req, res, next) => {
   const blogId = req.params.id;
   let result;
   try {
-    result = await BlogModel.findByIdAndRemove(blogId).populate("userID");
+    result = await BlogModel.findByIdAndDelete(blogId).populate("userID");
     await result.userID.allBlogs.pull(result);
     await result.userID.save();
   } catch (error) {
